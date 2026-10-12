@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="input" />
+    <input type="text" class="input" />
+    <button onclick="handleLogin()">0798098098098</button>
+
+    <div class="text"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+    <script>
+      function convertToMD5(text) {
+        return CryptoJS.MD5(text).toString();
+      }
+
+      const api = 'https://alhamdpaint.com/api/login.php';
+      async function handleLogin() {
+        // console.log(document.querySelectorAll('.input')[0].value);
+        try {
+          fetch(api, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization:
+                'Bearer 8f3c9a2e7b1d6f4a0c8e5b3d9a7f2c1e6d4b8a0f9c5e3d7b1a6f2c8e4d9b5a0c',
+            },
+            body: JSON.stringify({
+              username: document.querySelectorAll('.input')[0].value,
+              password: convertToMD5(
+                document.querySelectorAll('.input')[1].value,
+              ),
+            }),
+          })
+            .then(Res => Res.json())
+            .then(result => {
+              console.log(result.success);
+
+              document.querySelector(
+                '.text',
+              ).innerHTML = `Response is ${result.message}`;
+            });
+        } catch (e) {
+          console.log(e);
+        } finally {
+        }
+      }
+    </script>
+  </body>
+</html>

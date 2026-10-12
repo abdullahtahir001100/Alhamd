@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, Image } from 'react-native';
 import Svg, {
   Path,
   Rect,
@@ -12,23 +12,44 @@ import { Colors } from '../theme/colors';
 
 const { width } = Dimensions.get('window');
 
-export function AlHamdLogo({ size = 80 }) {
+// export function AlHamdLogo({ size = 80 }) {
+//   return (
+//     <View style={{ width: size, height: size * 1.25, alignItems: 'center', justifyContent: 'center' }}>
+//       <Svg width={size} height={size * 1.25} viewBox="0 0 80 100">
+//         <Path
+//           d="M40 4C35 15 18 36 18 55C18 70 29 82 43 82C48 82 53 80.5 57 77.8C54 75 52 70 52 64C52 52 60 44 60 44C58 40 54 36 50 28C46 20 42 10 40 4Z"
+//           fill="#1b77ec"
+//         />
+//         <Path
+//           d="M30 46C27 50 25 56 26 62C27 68 31 73 36 75C34 72 33 67 33 63C33 55 36 50 38 46C34 46 32 46 30 46Z"
+//           fill="#75b7fd"
+//         />
+//         <Path
+//           d="M50 45C50 45 42 56 42 66C42 75 48 81 55 81C65 81 72 72 72 61C72 47 58 35 50 45Z"
+//           fill="#0c356a"
+//         />
+//       </Svg>
+//     </View>
+//   );
+// }
+export function AlHamdLogo({ size = 90 }) {
   return (
-    <View style={{ width: size, height: size * 1.25, alignItems: 'center', justifyContent: 'center' }}>
-      <Svg width={size} height={size * 1.25} viewBox="0 0 80 100">
-        <Path
-          d="M40 4C35 15 18 36 18 55C18 70 29 82 43 82C48 82 53 80.5 57 77.8C54 75 52 70 52 64C52 52 60 44 60 44C58 40 54 36 50 28C46 20 42 10 40 4Z"
-          fill="#1b77ec"
-        />
-        <Path
-          d="M30 46C27 50 25 56 26 62C27 68 31 73 36 75C34 72 33 67 33 63C33 55 36 50 38 46C34 46 32 46 30 46Z"
-          fill="#75b7fd"
-        />
-        <Path
-          d="M50 45C50 45 42 56 42 66C42 75 48 81 55 81C65 81 72 72 72 61C72 47 58 35 50 45Z"
-          fill="#0c356a"
-        />
-      </Svg>
+    <View
+      style={{
+        width: size,
+        height: size,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Image
+        source={require('../assets/logo3.png')}
+        style={{
+          width: size,
+          height: size,
+        }}
+        resizeMode="contain"
+      />
     </View>
   );
 }
@@ -44,7 +65,12 @@ export function PaintArtworkFooter() {
 
       {/* Foreground Fluid White & Blue Waves */}
       <View style={styles.wavesContainer}>
-        <Svg width={width} height={140} viewBox="0 0 390 144" preserveAspectRatio="none">
+        <Svg
+          width={width}
+          height={140}
+          viewBox="0 0 390 144"
+          preserveAspectRatio="none"
+        >
           <Path
             d="M-10 144L-10 70C60 70 80 115 150 115C220 115 250 50 320 60C360 65 385 105 405 110L405 144H-10Z"
             fill="#eff6ff"
@@ -94,8 +120,22 @@ export function PaintArtworkFooter() {
             />
 
             {/* Crimp Lines */}
-            <Rect x="12" y="70" width="106" height="2" fill="#CBD5E1" opacity={0.8} />
-            <Rect x="12" y="105" width="106" height="2" fill="#CBD5E1" opacity={0.8} />
+            <Rect
+              x="12"
+              y="70"
+              width="106"
+              height="2"
+              fill="#CBD5E1"
+              opacity={0.8}
+            />
+            <Rect
+              x="12"
+              y="105"
+              width="106"
+              height="2"
+              fill="#CBD5E1"
+              opacity={0.8}
+            />
 
             {/* Rim */}
             <Rect
@@ -109,12 +149,12 @@ export function PaintArtworkFooter() {
               strokeWidth="1"
             />
             {/* Paint surface */}
-            <Rect x="16" y="38" width="98" height="6" rx="3" fill="#0062E0" />
+            <Rect x="16" y="38" width="98" height="6" rx="3" fill="black" />
 
             {/* Paint Drips */}
-            <Path d="M26 44 Q 30 75 35 75 Q 40 75 44 44 Z" fill="#0062E0" />
-            <Path d="M52 44 Q 57 88 62 88 Q 67 88 72 44 Z" fill="#0062E0" />
-            <Path d="M80 44 Q 84 65 88 65 Q 92 65 96 44 Z" fill="#0062E0" />
+            <Path d="M26 44 Q 30 75 35 75 Q 40 75 44 44 Z" fill="black" />
+            <Path d="M52 44 Q 57 88 62 88 Q 67 88 72 44 Z" fill="red" />
+            <Path d="M80 44 Q 84 65 88 65 Q 92 65 96 44 Z" fill="black" />
           </Svg>
         </View>
 
@@ -148,19 +188,12 @@ export function PaintArtworkFooter() {
             />
 
             {/* Rim */}
-            <Rect
-              x="5"
-              y="28"
-              width="85"
-              height="10"
-              rx="5"
-              fill="#CBD5E1"
-            />
-            <Rect x="12" y="31" width="71" height="4" rx="2" fill="#1877F2" />
+            <Rect x="5" y="28" width="85" height="10" rx="5" fill="#CBD5E1" />
+            <Rect x="12" y="31" width="71" height="4" rx="2" fill="black" />
 
             {/* Drips */}
-            <Path d="M22 36 Q 26 58 30 58 Q 34 58 38 36 Z" fill="#1877F2" />
-            <Path d="M48 36 Q 52 66 56 66 Q 60 66 64 36 Z" fill="#1877F2" />
+            <Path d="M22 36 Q 26 58 30 58 Q 34 58 38 36 Z" fill="red" />
+            <Path d="M48 36 Q 52 66 56 66 Q 60 66 64 36 Z" fill="black" />
           </Svg>
         </View>
       </View>
@@ -174,7 +207,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: 180,
+    height: 140,
     overflow: 'hidden',
   },
   pinkSplash: {
@@ -183,7 +216,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: 220,
     height: 160,
-    backgroundColor: '#FF3B81',
+    backgroundColor: 'red',
     borderTopLeftRadius: 100,
     borderTopRightRadius: 80,
     opacity: 0.9,
@@ -195,7 +228,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     width: 240,
     height: 130,
-    backgroundColor: '#095EDB',
+    backgroundColor: 'black',
     borderTopRightRadius: 120,
     opacity: 0.95,
   },
@@ -216,6 +249,8 @@ const styles = StyleSheet.create({
   bigCan: {
     width: 130,
     height: 130,
+    
+    
   },
   smallCan: {
     width: 95,

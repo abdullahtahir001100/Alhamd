@@ -11,22 +11,29 @@ export default function BottomNavBar({ activeTab, onTabChange, onScanPress }) {
         <TouchableOpacity
           style={styles.tabBtn}
           activeOpacity={0.8}
-          onPress={() => onTabChange('home')}>
+          onPress={() => onTabChange('home')}
+        >
           <Svg
             width={24}
             height={24}
             viewBox="0 0 20 20"
-            fill={activeTab === 'home' ? '#0062E0' : '#94A3B8'}>
+            fill={activeTab === 'home' ? '#D90429' : 'black'}
+          >
             <Path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
           </Svg>
           <Text
             style={[
               styles.tabLabel,
               activeTab === 'home' && styles.activeTabLabel,
-            ]}>
+            ]}
+          >
             Home
           </Text>
-          {activeTab === 'home' ? <View style={styles.activeIndicator} /> : <View style={styles.inactiveIndicator} />}
+          {activeTab === 'home' ? (
+            <View style={styles.activeIndicator} />
+          ) : (
+            <View style={styles.inactiveIndicator} />
+          )}
         </TouchableOpacity>
 
         {/* Center Floating Elevated Scan QR Button */}
@@ -34,7 +41,8 @@ export default function BottomNavBar({ activeTab, onTabChange, onScanPress }) {
           <TouchableOpacity
             style={styles.floatingScanBtn}
             activeOpacity={0.85}
-            onPress={onScanPress}>
+            onPress={onScanPress}
+          >
             <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
               <Rect
                 x="3"
@@ -42,7 +50,7 @@ export default function BottomNavBar({ activeTab, onTabChange, onScanPress }) {
                 width="7"
                 height="7"
                 rx="1.5"
-                stroke="#FFFFFF"
+                stroke="red"
                 strokeWidth={2.2}
               />
               <Rect
@@ -51,7 +59,7 @@ export default function BottomNavBar({ activeTab, onTabChange, onScanPress }) {
                 width="7"
                 height="7"
                 rx="1.5"
-                stroke="#FFFFFF"
+                stroke="red"
                 strokeWidth={2.2}
               />
               <Rect
@@ -60,13 +68,13 @@ export default function BottomNavBar({ activeTab, onTabChange, onScanPress }) {
                 width="7"
                 height="7"
                 rx="1.5"
-                stroke="#FFFFFF"
+                stroke="red"
                 strokeWidth={2.2}
               />
-              <Rect x="14" y="14" width="2" height="2" fill="#FFFFFF" />
-              <Rect x="19" y="14" width="2" height="2" fill="#FFFFFF" />
-              <Rect x="14" y="19" width="2" height="2" fill="#FFFFFF" />
-              <Rect x="19" y="19" width="2" height="2" fill="#FFFFFF" />
+              <Rect x="14" y="14" width="2" height="2" fill="red" />
+              <Rect x="19" y="14" width="2" height="2" fill="red" />
+              <Rect x="14" y="19" width="2" height="2" fill="red" />
+              <Rect x="19" y="19" width="2" height="2" fill="red" />
             </Svg>
           </TouchableOpacity>
           <Text style={styles.scanLabel}>Scan QR</Text>
@@ -76,18 +84,19 @@ export default function BottomNavBar({ activeTab, onTabChange, onScanPress }) {
         <TouchableOpacity
           style={styles.tabBtn}
           activeOpacity={0.8}
-          onPress={() => onTabChange('history')}>
+          onPress={() => onTabChange('history')}
+        >
           <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
             <Circle
               cx="12"
               cy="12"
               r="9"
-              stroke={activeTab === 'history' ? '#0062E0' : '#64748B'}
+              stroke={activeTab === 'history' ? 'red' : 'black'}
               strokeWidth={2}
             />
             <Polyline
               points="12 7 12 12 15 15"
-              stroke={activeTab === 'history' ? '#0062E0' : '#64748B'}
+              stroke={activeTab === 'history' ? 'black' : '#64748B'}
               strokeWidth={2}
             />
           </Svg>
@@ -95,10 +104,15 @@ export default function BottomNavBar({ activeTab, onTabChange, onScanPress }) {
             style={[
               styles.tabLabel,
               activeTab === 'history' && styles.activeTabLabel,
-            ]}>
+            ]}
+          >
             History
           </Text>
-          {activeTab === 'history' ? <View style={styles.activeIndicator} /> : <View style={styles.inactiveIndicator} />}
+          {activeTab === 'history' ? (
+            <View style={styles.activeIndicator} />
+          ) : (
+            <View style={styles.inactiveIndicator} />
+          )}
         </TouchableOpacity>
       </View>
     </View>
@@ -139,12 +153,12 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   activeTabLabel: {
-    color: '#0062E0',
+    color: 'black',
   },
   activeIndicator: {
     width: 28,
     height: 3,
-    backgroundColor: '#0062E0',
+    backgroundColor: 'red',
     borderRadius: 2,
     marginTop: 4,
   },
@@ -161,7 +175,7 @@ const styles = StyleSheet.create({
   floatingScanBtn: {
     width: 54,
     height: 54,
-    backgroundColor: '#0062E0',
+    backgroundColor: 'black',
     borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',

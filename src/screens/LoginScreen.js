@@ -20,15 +20,35 @@ export default function LoginScreen({ onLoginSuccess }) {
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const api = 'https://alhamdpaint.com/api/login.php';
+  async function  handleLogin (){
 
-  const handleLogin = async () => {
     if (!username.trim() || !password.trim()) {
       setErrorMessage('Please enter both username and password');
       return;
     }
 
-    setIsLoading(true);
-    setErrorMessage('');
+    
+      setIsLoading(true);
+    try{
+      fetch(api, {
+        method:"POST",
+        
+
+      }).then(Res => Res.json()).then(result => {
+        console.log(result)
+      })
+
+    }
+    catch(e){
+setErrorMessage(e);
+    }
+  
+    finally{
+      setIsLoading(false);
+    }
+    // setIsLoading(true);
+    
 
     // Attempt login or authenticate
     try {
@@ -54,12 +74,13 @@ export default function LoginScreen({ onLoginSuccess }) {
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        style={styles.innerContainer}>
+        style={styles.innerContainer}
+      >
         {/* Brand Header */}
         <View style={styles.header}>
-          <AlHamdLogo size={68} />
-          <Text style={styles.title}>AL-HAMAD</Text>
-          <Text style={styles.tagline}>TRADERS</Text>
+          <AlHamdLogo size={150} />
+          {/* <Text style={styles.title}>AL-HAMAD  </Text>
+          <Text style={styles.tagline}>TRADERS</Text> */}
         </View>
 
         {/* Login Form */}
@@ -117,7 +138,8 @@ export default function LoginScreen({ onLoginSuccess }) {
             />
             <TouchableOpacity
               onPress={() => setShowPassword(!showPassword)}
-              style={styles.eyeBtn}>
+              style={styles.eyeBtn}
+            >
               <Svg width={18} height={18} viewBox="0 0 24 24" fill="none">
                 <Path
                   d={
@@ -139,8 +161,11 @@ export default function LoginScreen({ onLoginSuccess }) {
             <TouchableOpacity
               style={styles.rememberRow}
               onPress={() => setRememberMe(!rememberMe)}
-              activeOpacity={0.7}>
-              <View style={[styles.checkbox, rememberMe && styles.checkboxActive]}>
+              activeOpacity={0.7}
+            >
+              <View
+                style={[styles.checkbox, rememberMe && styles.checkboxActive]}
+              >
                 {rememberMe && <Text style={styles.checkmark}>✓</Text>}
               </View>
               <Text style={styles.rememberText}>Remember me</Text>
@@ -156,7 +181,8 @@ export default function LoginScreen({ onLoginSuccess }) {
             style={styles.loginBtn}
             activeOpacity={0.88}
             onPress={handleLogin}
-            disabled={isLoading}>
+            disabled={isLoading}
+          >
             {isLoading ? (
               <ActivityIndicator color="#FFFFFF" size="small" />
             ) : (
@@ -165,7 +191,7 @@ export default function LoginScreen({ onLoginSuccess }) {
                 <Svg width={18} height={18} viewBox="0 0 24 24" fill="none">
                   <Path
                     d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                    stroke="#FFFFFF"
+                    stroke="black"
                     strokeWidth={2.4}
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -293,8 +319,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   checkboxActive: {
-    backgroundColor: '#0D62D9',
-    borderColor: '#0D62D9',
+    backgroundColor: 'red',
+    borderColor: 'red',
   },
   checkmark: {
     color: '#FFFFFF',
@@ -308,11 +334,11 @@ const styles = StyleSheet.create({
   },
   forgotText: {
     fontSize: 13,
-    color: '#0D62D9',
+    color: 'black',
     fontWeight: '600',
   },
   loginBtn: {
-    backgroundColor: '#0D62D9',
+    backgroundColor: 'red',
     height: 54,
     borderRadius: 16,
     alignItems: 'center',
@@ -329,7 +355,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   loginBtnText: {
-    color: '#FFFFFF',
+    color: 'black',
     fontSize: 16,
     fontWeight: '700',
   },

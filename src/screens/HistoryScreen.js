@@ -157,7 +157,7 @@ export default function HistoryScreen() {
           <View style={styles.titleRow}>
             <View>
               <Text style={styles.headerTitle}>
-                Transaction <Text style={{ color: '#0267F6' }}>History</Text>
+                Transaction <Text style={{ color: 'red' }}>History</Text>
               </Text>
               <Text style={styles.headerSubtitle}>
                 Al-Hamad Traders • Paints & Hardware
@@ -165,15 +165,40 @@ export default function HistoryScreen() {
             </View>
 
             {/* Date Range Pill */}
-            <TouchableOpacity style={styles.datePill} onPress={() => setPickerStep('from')}>
-              <Svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth={2}>
-                <Path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
+            <TouchableOpacity
+              style={styles.datePill}
+              onPress={() => setPickerStep('from')}
+            >
+              <Svg
+                width={14}
+                height={14}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#64748B"
+                strokeWidth={2}
+              >
+                <Path
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </Svg>
               <Text style={styles.datePillText}>
                 {formatDate(fromDate)} - {formatDate(toDate, true)}
               </Text>
-              <Svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth={2.5}>
-                <Path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+              <Svg
+                width={12}
+                height={12}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#64748B"
+                strokeWidth={2.5}
+              >
+                <Path
+                  d="M19 9l-7 7-7-7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </Svg>
             </TouchableOpacity>
           </View>
@@ -181,20 +206,39 @@ export default function HistoryScreen() {
           {/* Search Row */}
           <View style={styles.searchRow}>
             <View style={styles.searchInputWrap}>
-              <Svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth={2.2} style={styles.searchIcon}>
-                <Path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round" />
+              <Svg
+                width={16}
+                height={16}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="red"
+                strokeWidth={2.2}
+                style={styles.searchIcon}
+              >
+                <Path
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </Svg>
               <TextInput
                 style={styles.searchInput}
                 placeholder="Search order #, item, client..."
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor="black"
                 value={searchQuery}
                 onChangeText={setSearchQuery}
               />
             </View>
 
             <TouchableOpacity style={styles.filterBtn}>
-              <Svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth={2}>
+              <Svg
+                width={16}
+                height={16}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="red"
+                strokeWidth={2}
+              >
                 <Path
                   d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
                   strokeLinecap="round"
@@ -208,35 +252,69 @@ export default function HistoryScreen() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.pillsScroll}>
+            contentContainerStyle={styles.pillsScroll}
+          >
             <TouchableOpacity
               style={[styles.pill, activeFilter === 'all' && styles.pillActive]}
-              onPress={() => setActiveFilter('all')}>
-              <Text style={[styles.pillText, activeFilter === 'all' && styles.pillTextActive]}>
+              onPress={() => setActiveFilter('all')}
+            >
+              <Text
+                style={[
+                  styles.pillText,
+                  activeFilter === 'all' && styles.pillTextActive,
+                ]}
+              >
                 All Orders
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[styles.pill, activeFilter === 'sales' && styles.pillActive]}
-              onPress={() => setActiveFilter('sales')}>
-              <Text style={[styles.pillText, activeFilter === 'sales' && styles.pillTextActive]}>
+              style={[
+                styles.pill,
+                activeFilter === 'sales' && styles.pillActive,
+              ]}
+              onPress={() => setActiveFilter('sales')}
+            >
+              <Text
+                style={[
+                  styles.pillText,
+                  activeFilter === 'sales' && styles.pillTextActive,
+                ]}
+              >
                 Sales (Rs 121k)
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[styles.pill, activeFilter === 'returns' && styles.pillActive]}
-              onPress={() => setActiveFilter('returns')}>
-              <Text style={[styles.pillText, activeFilter === 'returns' && styles.pillTextActive]}>
+              style={[
+                styles.pill,
+                activeFilter === 'returns' && styles.pillActive,
+              ]}
+              onPress={() => setActiveFilter('returns')}
+            >
+              <Text
+                style={[
+                  styles.pillText,
+                  activeFilter === 'returns' && styles.pillTextActive,
+                ]}
+              >
                 Returns
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[styles.pill, activeFilter === 'transport' && styles.pillActive]}
-              onPress={() => setActiveFilter('transport')}>
-              <Text style={[styles.pillText, activeFilter === 'transport' && styles.pillTextActive]}>
+              style={[
+                styles.pill,
+                activeFilter === 'transport' && styles.pillActive,
+              ]}
+              onPress={() => setActiveFilter('transport')}
+            >
+              <Text
+                style={[
+                  styles.pillText,
+                  activeFilter === 'transport' && styles.pillTextActive,
+                ]}
+              >
                 Transport
               </Text>
             </TouchableOpacity>
@@ -244,17 +322,15 @@ export default function HistoryScreen() {
         </View>
 
         {/* Transaction Table */}
-        <ScrollView
-          style={styles.listContainer}
-          contentContainerStyle={styles.listContent}
-          showsVerticalScrollIndicator={false}>
-          
+        <View style={styles.listContainer}>
           <View style={styles.transactionsCard}>
             {/* Card Header */}
             <View style={styles.tableHeaderInfo}>
               <View style={styles.recordCountWrap}>
                 <View style={styles.pulseDot} />
-                <Text style={styles.recordCountText}>Records • {filteredItems.length} Transactions</Text>
+                <Text style={styles.recordCountText}>
+                  Records • {filteredItems.length} Transactions
+                </Text>
               </View>
               <TouchableOpacity>
                 <Text style={styles.exportText}>Export CSV</Text>
@@ -263,57 +339,99 @@ export default function HistoryScreen() {
 
             {/* Table Headers */}
             <View style={styles.tableHeaderRow}>
-              <View style={[styles.col, styles.col2]}><Text style={styles.thText}>ORDER</Text></View>
-              <View style={[styles.col, styles.col5, { paddingLeft: 4 }]}><Text style={styles.thText}>ITEM</Text></View>
-              <View style={[styles.col, styles.col2, styles.alignRight]}><Text style={styles.thText}>QTY</Text></View>
-              <View style={[styles.col, styles.col3, styles.alignRight]}><Text style={styles.thText}>AMOUNT</Text></View>
+              <View style={[styles.col, styles.col2]}>
+                <Text style={styles.thText}>ORDER</Text>
+              </View>
+              <View style={[styles.col, styles.col5, { paddingLeft: 4 }]}>
+                <Text style={styles.thText}>ITEM</Text>
+              </View>
+              <View style={[styles.col, styles.col2, styles.alignRight]}>
+                <Text style={styles.thText}>QTY</Text>
+              </View>
+              <View style={[styles.col, styles.col3, styles.alignRight]}>
+                <Text style={styles.thText}>AMOUNT</Text>
+              </View>
             </View>
 
             {/* Table Rows */}
-            {filteredItems.map((item, index) => {
-              const isReturn = item.type === 'returns';
-              return (
-                <View key={item.id} style={styles.tableRow}>
-                  <View style={[styles.col, styles.col2]}>
-                    <Text style={[styles.tdOrder, isReturn && { color: '#F43F5E' }]}>#{item.id}</Text>
-                  </View>
-                  <View style={[styles.col, styles.col5, { paddingLeft: 4 }]}>
-                    <View style={styles.itemTitleWrap}>
-                      <Text style={styles.tdItemTitle} numberOfLines={1}>{item.item}</Text>
-                      {isReturn && (
-                        <View style={styles.retBadge}>
-                          <Text style={styles.retBadgeText}>Ret</Text>
-                        </View>
-                      )}
+            {/* Table Rows - Inner Scroll */}
+            <ScrollView
+              style={styles.rowsScroll}
+              nestedScrollEnabled={true}
+              showsVerticalScrollIndicator={true}
+            >
+              {filteredItems.map((item, index) => {
+                const isReturn = item.type === 'returns';
+                return (
+                  <View key={item.id} style={styles.tableRow}>
+                    <View style={[styles.col, styles.col2]}>
+                      <Text
+                        style={[
+                          styles.tdOrder,
+                          isReturn && { color: '#F43F5E' },
+                        ]}
+                      >
+                        #{item.id}
+                      </Text>
                     </View>
-                    <Text style={styles.tdItemSub}>{item.date}</Text>
+                    <View style={[styles.col, styles.col5, { paddingLeft: 4 }]}>
+                      <View style={styles.itemTitleWrap}>
+                        <Text style={styles.tdItemTitle} numberOfLines={1}>
+                          {item.item}
+                        </Text>
+                        {isReturn && (
+                          <View style={styles.retBadge}>
+                            <Text style={styles.retBadgeText}>Ret</Text>
+                          </View>
+                        )}
+                      </View>
+                      <Text style={styles.tdItemSub}>{item.date}</Text>
+                    </View>
+                    <View style={[styles.col, styles.col2, styles.alignRight]}>
+                      <Text style={styles.tdQty}>{item.qty}</Text>
+                    </View>
+                    <View style={[styles.col, styles.col3, styles.alignRight]}>
+                      <Text
+                        style={[
+                          styles.tdAmount,
+                          isReturn && { color: '#F43F5E' },
+                        ]}
+                      >
+                        {isReturn ? `-${item.amount}` : item.amount}
+                      </Text>
+                    </View>
                   </View>
-                  <View style={[styles.col, styles.col2, styles.alignRight]}>
-                    <Text style={styles.tdQty}>{item.qty}</Text>
-                  </View>
-                  <View style={[styles.col, styles.col3, styles.alignRight]}>
-                    <Text style={[styles.tdAmount, isReturn && { color: '#F43F5E' }]}>
-                      {isReturn ? `-${item.amount}` : item.amount}
-                    </Text>
-                  </View>
-                </View>
-              );
-            })}
+                );
+              })}
+            </ScrollView>
 
             {/* Table Footer */}
             <View style={styles.tableFooter}>
-              <Text style={styles.tableFooterText}>Showing {filteredItems.length} of {SAMPLE_HISTORY.length} items</Text>
+              <Text style={styles.tableFooterText}>
+                Showing {filteredItems.length} of {SAMPLE_HISTORY.length} items
+              </Text>
               <TouchableOpacity style={styles.loadMoreBtn}>
                 <Text style={styles.loadMoreText}>Load More</Text>
-                <Svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="#0267F6" strokeWidth={2.5}>
-                  <Path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+                <Svg
+                  width={12}
+                  height={12}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0267F6"
+                  strokeWidth={2.5}
+                >
+                  <Path
+                    d="M19 9l-7 7-7-7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </Svg>
               </TouchableOpacity>
             </View>
           </View>
 
           <View style={{ height: 180 }} />
-        </ScrollView>
+        </View>
       </View>
     </View>
   );
@@ -326,7 +444,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: 'transparent',
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     paddingTop: 12,
     paddingBottom: 8,
   },
@@ -430,9 +548,9 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(226, 232, 240, 0.7)',
   },
   pillActive: {
-    backgroundColor: '#0267F6',
-    borderColor: '#0267F6',
-    shadowColor: '#3B82F6',
+    backgroundColor: 'black',
+    borderColor: 'red',
+    // shadowColor: '#3B82F6',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 6,
@@ -441,7 +559,7 @@ const styles = StyleSheet.create({
   pillText: {
     fontSize: 12,
     fontWeight: '500',
-    color: '#475569',
+    color: 'black',
   },
   pillTextActive: {
     color: '#FFFFFF',
@@ -449,6 +567,8 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 1,
+    minHeight: 0,
+    paddingHorizontal: 16,
   },
   listContent: {
     paddingHorizontal: 16,
@@ -466,7 +586,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 20,
     elevation: 3,
+    
   },
+  rowsScroll: {
+  maxHeight: 320,
+  flexGrow: 0,
+},
   tableHeaderInfo: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -591,5 +716,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#0267F6',
   },
-
 });
